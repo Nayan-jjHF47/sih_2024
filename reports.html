@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Monitoring System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Monitoring Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="reports.html" class="active">Reports</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="user_profiles.html">User Profiles</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <h1>Reports</h1>
+        </header>
+
+        <!-- Filter Options -->
+        <section class="filter-options">
+            <form>
+                <label for="date-range">Date Range:</label>
+                <input type="text" id="date-range" name="date-range" placeholder="YYYY-MM-DD to YYYY-MM-DD">
+
+                <label for="platform">Platform:</label>
+                <select id="platform" name="platform">
+                    <option value="all">All</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="instagram">Instagram</option>
+                </select>
+
+                <label for="severity">Severity Level:</label>
+                <select id="severity" name="severity">
+                    <option value="all">All</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+
+                <button type="submit" class="cta-button">Apply Filters</button>
+            </form>
+        </section>
+
+        <!-- Download Options -->
+        <section class="download-options">
+            <button class="cta-button">Download as PDF</button>
+            <button class="cta-button">Download as Excel</button>
+        </section>
+
+        <!-- Reports Table -->
+        <section class="reports-table">
+            <h2>Flagged Channels/Handles</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Channel/Handle</th>
+                        <th>Platform</th>
+                        <th>Date Flagged</th>
+                        <th>Severity</th>
+                        <th>IP Address</th>
+                        <th>Mobile Number</th>
+                        <th>Email ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Channel 1</td>
+                        <td>Telegram</td>
+                        <td>2024-09-05</td>
+                        <td>High</td>
+                        <td>192.168.1.1</td>
+                        <td>+91 1234567890</td>
+                        <td>example1@example.com</td>
+                        <td><button class="action-btn">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>Handle 2</td>
+                        <td>WhatsApp</td>
+                        <td>2024-09-04</td>
+                        <td>Medium</td>
+                        <td>192.168.1.2</td>
+                        <td>+91 0987654321</td>
+                        <td>example2@example.com</td>
+                        <td><button class="action-btn">View Details</button></td>
+                    </tr>
+                    <!-- Additional rows as needed -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>
