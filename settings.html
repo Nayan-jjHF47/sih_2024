@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="user_profiles.html">User Profiles</a></li>
+            <li><a href="settings.html" class="active">Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Settings</h1>
+        </header>
+
+        <section class="user-preferences">
+            <h2>User Preferences</h2>
+            <form id="preferencesForm">
+                <div class="form-group">
+                    <label for="emailNotifications">Email Notifications:</label>
+                    <input type="checkbox" id="emailNotifications" name="emailNotifications">
+                </div>
+                <div class="form-group">
+                    <label for="smsAlerts">SMS Alerts:</label>
+                    <input type="checkbox" id="smsAlerts" name="smsAlerts">
+                </div>
+                <div class="form-group">
+                    <label for="notificationPreview">Notification Preview:</label>
+                    <p id="notificationPreview">Your notifications will appear here.</p>
+                </div>
+            </form>
+        </section>
+
+        <section class="alert-thresholds">
+            <h2>Alert Thresholds</h2>
+            <form id="thresholdsForm">
+                <div class="form-group">
+                    <label for="keywordThreshold">Suspicious Keywords Threshold:</label>
+                    <input type="range" id="keywordThreshold" name="keywordThreshold" min="1" max="10" value="5" oninput="updateKeywordThreshold(this.value)">
+                    <span id="keywordThresholdValue">5</span>
+                </div>
+                <div class="form-group">
+                    <label for="activityThreshold">Volume of Activity Threshold:</label>
+                    <input type="range" id="activityThreshold" name="activityThreshold" min="1" max="100" value="50" oninput="updateActivityThreshold(this.value)">
+                    <span id="activityThresholdValue">50</span>
+                </div>
+            </form>
+        </section>
+
+        <section class="account-security">
+            <h2>Account Security</h2>
+            <form id="securityForm">
+                <div class="form-group">
+                    <label for="twoFactorAuth">Two-Factor Authentication:</label>
+                    <input type="checkbox" id="twoFactorAuth" name="twoFactorAuth">
+                </div>
+                <div class="form-group">
+                    <label for="passwordChange">Change Password:</label>
+                    <input type="password" id="passwordChange" name="passwordChange" placeholder="New Password">
+                    <button type="button" onclick="changePassword()">Change Password</button>
+                </div>
+                <div class="form-group">
+                    <label for="loginActivity">View Login Activity:</label>
+                    <button type="button" onclick="viewLoginActivity()">View Activity</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Login Activity Modal -->
+        <div id="loginActivityModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeLoginActivityModal()">&times;</span>
+                <h2>Login Activity</h2>
+                <div id="loginActivityDetails">
+                    <!-- Login activity details will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateKeywordThreshold(value) {
+            document.getElementById('keywordThresholdValue').textContent = value;
+        }
+
+        function updateActivityThreshold(value) {
+            document.getElementById('activityThresholdValue').textContent = value;
+        }
+
+        function changePassword() {
+            // Implement password change functionality
+            alert('Password change functionality is not yet implemented.');
+        }
+
+        function viewLoginActivity() {
+            // Sample login activity data
+            const loginActivityData = [
+                { date: '2024-09-10', time: '14:32', location: 'New York, USA' },
+                { date: '2024-09-09', time: '18:21', location: 'Los Angeles, USA' },
+                { date: '2024-09-08', time: '09:05', location: 'San Francisco, USA' }
+            ];
+
+            const activityDetails = document.getElementById('loginActivityDetails');
+            activityDetails.innerHTML = loginActivityData.map(activity => `
+                <p><strong>Date:</strong> ${activity.date}, <strong>Time:</strong> ${activity.time}, <strong>Location:</strong> ${activity.location}</p>
+            `).join('');
+
+            document.getElementById('loginActivityModal').style.display = 'block';
+        }
+
+        function closeLoginActivityModal() {
+            document.getElementById('loginActivityModal').style.display = 'none';
+        }
+    </script>
+
+    <style>
+        /* Additional CSS for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>
