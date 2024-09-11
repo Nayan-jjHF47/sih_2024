@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profiles</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="user_profiles.html" class="active">User Profiles</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Flagged User Profiles</h1>
+        </header>
+
+        <div class="search-filter">
+            <input type="text" placeholder="Search Users..." id="searchInput">
+            <button onclick="searchUsers()">Search</button>
+        </div>
+
+        <div class="bulk-actions">
+            <button onclick="addToWatchlist()">Add to Watchlist</button>
+            <button onclick="reportToAuthorities()">Report to Authorities</button>
+            <button onclick="archiveUsers()">Archive Selected</button>
+        </div>
+
+        <div class="user-profiles">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Platform</th>
+                        <th>Activity</th>
+                        <th>Flagged History</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userProfilesTableBody">
+                    <!-- User profiles will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- User Profile Modal -->
+        <div id="userProfileModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h2>User Profile Details</h2>
+                <div id="modalDetails">
+                    <!-- Profile details will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample user data
+        const userData = [
+            { id: 1, name: 'John Doe', platform: 'Telegram', activity: 'High', flaggedHistory: 'Multiple reports', details: { ip: '192.168.1.1', email: 'john@example.com', mobile: '1234567890' } },
+            { id: 2, name: 'Jane Smith', platform: 'WhatsApp', activity: 'Medium', flaggedHistory: 'Suspicious activity', details: { ip: '192.168.1.2', email: 'jane@example.com', mobile: '0987654321' } },
+            { id: 3, name: 'Alice Johnson', platform: 'Instagram', activity: 'Low', flaggedHistory: 'Unusual behavior', details: { ip: '192.168.1.3', email: 'alice@example.com', mobile: '1122334455' } }
+        ];
+
+        function renderUserProfiles() {
+            const tbody = document.getElementById('userProfilesTableBody');
+            tbody.innerHTML = ''; // Clear previous profiles
+
+            userData.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="checkbox" class="user-checkbox" data-id="${user.id}"></td>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.platform}</td>
+                    <td>${user.activity}</td>
+                    <td>${user.flaggedHistory}</td>
+                    <td><button class="action-btn" onclick="viewUserProfile(${user.id})">View Details</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function searchUsers() {
+            // Implement search functionality
+        }
+
+        function addToWatchlist() {
+            // Implement add to watchlist functionality
+        }
+
+        function reportToAuthorities() {
+            // Implement report to authorities functionality
+        }
+
+        function archiveUsers() {
+            // Implement archive users functionality
+        }
+
+        function viewUserProfile(id) {
+            const user = userData.find(user => user.id === id);
+            const modalDetails = document.getElementById('modalDetails');
+            modalDetails.innerHTML = `
+                <p><strong>ID:</strong> ${user.id}</p>
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Platform:</strong> ${user.platform}</p>
+                <p><strong>Activity:</strong> ${user.activity}</p>
+                <p><strong>Flagged History:</strong> ${user.flaggedHistory}</p>
+                <p><strong>IP Address:</strong> ${user.details.ip}</p>
+                <p><strong>Email:</strong> ${user.details.email}</p>
+                <p><strong>Mobile Number:</strong> ${user.details.mobile}</p>
+            `;
+            document.getElementById('userProfileModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('userProfileModal').style.display = 'none';
+        }
+
+        // Render user profiles on page load
+        window.onload = renderUserProfiles;
+    </script>
+
+    <style>
+        /* Additional CSS for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>
