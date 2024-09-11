@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Monitoring System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Monitoring Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="alerts.html">Alerts</a></li>
+            <li><a href="user_profiles.html">User Profiles</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <h1>Dashboard</h1>
+        </header>
+
+        <!-- Metrics Section -->
+        <section class="metrics">
+            <div class="metric-box">
+                <h3>Total Alerts</h3>
+                <p>120</p>
+            </div>
+            <div class="metric-box">
+                <h3>Flagged Users</h3>
+                <p>45</p>
+            </div>
+            <div class="metric-box">
+                <h3>Suspicious Channels</h3>
+                <p>25</p>
+            </div>
+        </section>
+
+        <!-- Alerts Section -->
+        <section class="alerts">
+            <h2>Recent Alerts</h2>
+            <table>
+                <tr>
+                    <th>Channel</th>
+                    <th>Date</th>
+                    <th>Severity</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Channel 1</td>
+                    <td>2024-09-05</td>
+                    <td>High</td>
+                    <td><button class="action-btn">View</button></td>
+                </tr>
+                <tr>
+                    <td>Channel 2</td>
+                    <td>2024-09-04</td>
+                    <td>Medium</td>
+                    <td><button class="action-btn">View</button></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Trends Section -->
+        <section class="trends">
+            <h2>Activity Trends</h2>
+            <div class="chart-box">
+                <p>Graph will be displayed here</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
