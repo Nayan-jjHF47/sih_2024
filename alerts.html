@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="alerts.html" class="active">Alerts</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="user_profiles.html">User Profiles</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Live Alerts</h1>
+        </header>
+
+        <div class="search-filter">
+            <input type="text" placeholder="Search Alerts..." id="searchInput">
+            <button onclick="searchAlerts()">Search</button>
+        </div>
+
+        <div class="filter-options">
+            <label for="severityFilter">Filter by Severity:</label>
+            <select id="severityFilter" onchange="filterBySeverity()">
+                <option value="all">All</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+
+        <div class="download-options">
+            <button onclick="downloadAlerts()">Download Alerts</button>
+        </div>
+
+        <div class="alerts">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Platform</th>
+                        <th>Severity</th>
+                        <th>Timestamp</th>
+                        <th>Details</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="alertsTableBody">
+                    <!-- Alerts will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const alertsData = [
+            { id: 1, platform: 'Telegram', severity: 'High', timestamp: '2024-09-11 12:30', details: 'Suspicious message from unknown user.', actions: 'View' },
+            { id: 2, platform: 'WhatsApp', severity: 'Medium', timestamp: '2024-09-11 13:00', details: 'Multiple login attempts detected.', actions: 'View' },
+            { id: 3, platform: 'Instagram', severity: 'Low', timestamp: '2024-09-11 14:15', details: 'Account sharing suspected.', actions: 'View' }
+        ];
+
+        function renderAlerts() {
+            const tbody = document.getElementById('alertsTableBody');
+            tbody.innerHTML = ''; // Clear previous alerts
+
+            alertsData.forEach(alert => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${alert.id}</td>
+                    <td>${alert.platform}</td>
+                    <td>${alert.severity}</td>
+                    <td>${alert.timestamp}</td>
+                    <td>${alert.details}</td>
+                    <td><button class="action-btn" onclick="viewAlert(${alert.id})">${alert.actions}</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function searchAlerts() {
+            // Implement search functionality
+        }
+
+        function filterBySeverity() {
+            // Implement severity filter functionality
+        }
+
+        function downloadAlerts() {
+            // Implement download alerts functionality
+        }
+
+        function viewAlert(id) {
+            // Implement view alert details functionality
+        }
+
+        // Render alerts on page load
+        window.onload = renderAlerts;
+    </script>
+</body>
+</html>
